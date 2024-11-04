@@ -4,6 +4,7 @@ import { IoFilterSharp } from "react-icons/io5";
 import FilterMenu from "./FilterMenu";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import UserDetails from "./UserDetails";
+import usersData from "../data/User_DATA";
 
 interface UserData {
   organization: string;
@@ -49,75 +50,8 @@ interface UserData {
   };
 }
 
-// interface UserDetailsProps {
-//   name: string;
-//   id: string;
-//   tier: number;
-//   balance: string;
-//   bankName: string;
-//   personalInfo: {
-//     fullName: string;
-//     image: string;
-//     phoneNumber: string;
-//     email: string;
-//     bvn: string;
-//     gender: string;
-//     maritalStatus: string;
-//     children: string;
-//     typeOfResidence: string;
-//   };
-//   education: any;
-//   socials: any;
-//   guarantor: any;
-// }
-
 const UserDashboard: React.FC = () => {
-  const [users, setUsers] = useState<UserData[]>([
-    {
-      organization: "Lendsqr",
-      username: "Adedeji",
-      email: "adedeji@lendsqr.com",
-      phoneNumber: "08078903721",
-      dateJoined: "May 15, 2020 10:00 AM",
-      status: "Active",
-      // Add sample user details
-      id: "USR001",
-      tier: 2,
-      balance: "₦50,000",
-      bankName: "GT Bank",
-      personalInfo: {
-        fullName: "Adedeji John Doe",
-        image: "",
-        phoneNumber: "08078903721",
-        email: "adedeji@lendsqr.com",
-        bvn: "12345678901",
-        gender: "Male",
-        maritalStatus: "Single",
-        children: "None",
-        typeOfResidence: "Rented Apartment",
-      },
-      education: {
-        level: "BSc",
-        employmentStatus: "Employed",
-        sector: "Technology",
-        duration: "2 years",
-        officeEmail: "adedeji.doe@example.com",
-        monthlyIncome: "₦250,000",
-        loanRepayment: "₦50,000",
-      },
-      socials: {
-        twitter: "@adedeji",
-        facebook: "facebook.com/adedeji",
-        instagram: "@adedeji",
-      },
-      guarantor: {
-        fullName: "Guarantor Name",
-        phoneNumber: "08012345678",
-        email: "guarantor@example.com",
-        relationship: "Friend",
-      },
-    },
-  ]);
+  const [users, setUsers] = useState<UserData[]>(usersData);
   const [filterMenuOpen, setFilterMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState("");
   const [userActionMenuOpen, setUserActionMenuOpen] = useState<number | null>(
@@ -138,13 +72,14 @@ const UserDashboard: React.FC = () => {
   };
 
   const handleFilterApply = (filters: any) => {
-    // Apply filters to users
     setFilterMenuOpen(false);
   };
 
   const handleUserActionClick = (index: number) => {
     setUserActionMenuOpen(userActionMenuOpen === index ? null : index);
   };
+
+  users.map((user, index) => console.log(user.organization));
 
   return (
     <div className="user-dashboard">
@@ -176,45 +111,6 @@ const UserDashboard: React.FC = () => {
           <div className="user-table">
             <table>
               <thead>
-                {/* <tr id="header-row">
-              <th>
-                ORGANIZATION{" "}
-                <span className="filter-icon">
-                  <IoFilterSharp size={15} />
-                </span>
-              </th>
-              <th id="filter">
-                USERNAME{" "}
-                <span className="filter-icon">
-                  <IoFilterSharp size={15} />
-                </span>
-              </th>
-              <th id="filter">
-                EMAIL{" "}
-                <span className="filter-icon">
-                  <IoFilterSharp size={15} />
-                </span>
-              </th>
-              <th id="filter">
-                PHONE NUMBER{" "}
-                <span className="filter-icon">
-                  <IoFilterSharp size={15} />
-                </span>
-              </th>
-              <th>
-                DATE JOINED{" "}
-                <span className="filter-icon">
-                  <IoFilterSharp size={15} />
-                </span>
-              </th>
-              <th>
-                STATUS{" "}
-                <span className="filter-icon">
-                  <IoFilterSharp size={15} />
-                </span>
-              </th>
-              <th></th>
-            </tr> */}
                 <tr>
                   {[
                     "ORGANIZATION",
@@ -251,7 +147,7 @@ const UserDashboard: React.FC = () => {
                     <td>
                       <span
                         id="status"
-                        className={`status ${user.status.toLowerCase()}`}
+                        className={`status ${user?.status?.toLowerCase()}`}
                       >
                         {user.status}
                       </span>
