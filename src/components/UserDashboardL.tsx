@@ -59,6 +59,19 @@ const UserDashboard: React.FC = () => {
   );
   const [selectedUser, setSelectedUser] = useState<UserData | null>(null);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const usersPerPage = 10;
+
+  const totalPages = Math.ceil(users.length / usersPerPage);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
+
   const handleUserSelect = (user: UserData) => {
     setSelectedUser(user);
   };
@@ -137,7 +150,7 @@ const UserDashboard: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {users.map((user, index) => (
+                {currentUsers.map((user, index) => (
                   <tr key={index}>
                     <td>{user.organization}</td>
                     <td>{user.username}</td>
@@ -201,17 +214,33 @@ const UserDashboard: React.FC = () => {
               <select>
                 <option>100</option>
               </select>
-              <span>out of 100</span>
+              <span>out of {users.length} entries</span>
             </div>
             <div className="page-numbers">
-              <button className="prev">←</button>
-              <button className="active">1</button>
-              <button>2</button>
-              <button>3</button>
+              <button
+                className="prev"
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+              >
+                ←
+              </button>
+              {Array.from({ length: totalPages }, (_, index) => (
+                <button
+                  key={index + 1}
+                  className={currentPage === index + 1 ? "active" : ""}
+                  onClick={() => handlePageChange(index + 1)}
+                >
+                  {index + 1}
+                </button>
+              ))}
               <span>...</span>
-              <button>15</button>
-              <button>16</button>
-              <button className="next">→</button>
+              <button
+                className="next"
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+              >
+                →
+              </button>
             </div>
           </div>
         </div>

@@ -73,7 +73,7 @@ const UserDetails: React.FC<{
         <div className="user-details__avatar">
           <div className="user-details__avatar-placeholder">
             {user.personalInfo.image ? (
-              <img src={`assets/${user.personalInfo.image}`} alt="" />
+              <img id="user-real-avatar" src={user.personalInfo.image} alt="" />
             ) : (
               <LuUser2 id="user-avatar" />
             )}
