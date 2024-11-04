@@ -48,7 +48,7 @@ const TopBar: React.FC = ({ user }: TopBarProps) => {
         <div className="header__user-profile">
           {user?.avatar ? (
             <img
-              src="/assets/user-avatar.png"
+              src="/assets/user-image.png"
               alt="User Avatar"
               className="header__user-avatar"
             />

@@ -19,7 +19,6 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          // Collect filter values and call onApply
           onApply({});
         }}
       >
@@ -27,7 +26,6 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
           <label>Organization</label>
           <select name="organization">
             <option value="">Select</option>
-            {/* Add organization options */}
           </select>
         </div>
         <div className="filter-field">
