@@ -55,7 +55,7 @@ Copy code
 npm start
 This will launch the app on http://localhost:3000.
 
-Folder Structure
+# Folder Structure
 src/components: Contains reusable UI components, including the User Dashboard, Pagination controls, and Data Visualizations.
 src/pages: Top-level pages and main application routes.
 src/styles: Contains all SCSS files, organized for modular and maintainable styling.
@@ -64,7 +64,7 @@ Implementation Details
 User Dashboard with Pagination
 The User Dashboard features an interactive and optimized way to display user data in manageable chunks using pagination. React’s useState and useEffect hooks handle the current page, while SCSS styles ensure consistency with the overall design.
 
-Key Decisions:
+# Key Decisions:
 
 Dynamic Page Calculation: Automatically adjusts the total page count based on the dataset size, ensuring the pagination remains responsive.
 User-Friendly Navigation: Allows admins to quickly navigate between user pages, with direct page access buttons.
@@ -74,10 +74,10 @@ Charts and graphs in the Admin Console provide real-time data insights. These vi
 SCSS Styling
 SCSS is used for all styling, allowing modular and maintainable styles. Variables, mixins, and partials are utilized for consistency and adherence to the design system, making it easier to adjust styles globally when needed.
 
-Future Improvements
+# Future Improvements
 Server-Side Pagination: Improve performance by loading only necessary data from the server.
 Accessibility Enhancements: Add ARIA roles, keyboard navigability, and screen reader support for an inclusive experience.
 Role-Based Access Control: Implement permissions to restrict access to certain features based on user roles.
 
-#Conclusion
+# Conclusion
 The Lendsqr Admin Console combines robust functionality with user-centric design, supporting efficient management of user data and real-time analytics. Through careful design decisions and modular architecture, the project is scalable, maintainable, and ready for future enhancements. The Admin Console empowers administrators with tools to make informed decisions, monitor activity, and streamline operations within the Lendsqr ecosystem.
