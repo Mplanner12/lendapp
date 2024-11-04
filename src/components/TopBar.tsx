@@ -46,15 +46,11 @@ const TopBar: React.FC = ({ user }: TopBarProps) => {
           />
         </button>
         <div className="header__user-profile">
-          {user?.avatar ? (
-            <img
-              src="/assets/user-image.png"
-              alt="User Avatar"
-              className="header__user-avatar"
-            />
-          ) : (
-            <FaRegCircleUser size={32} color="#213f7d" />
-          )}
+          <img
+            src="/assets/user-image.png"
+            alt="User Avatar"
+            className="header__user-avatar"
+          />
           <span className="header__user-name">Adedeji</span>
           <IoMdArrowDropdown size={20} color="#213F7D" />
         </div>
