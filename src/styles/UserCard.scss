@@ -1,0 +1,37 @@
+.user-card {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+  &__name {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  &__status {
+    color: #6b7280;
+  }
+
+  &__actions {
+    display: flex;
+    margin-top: 16px;
+
+    &__button {
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    &__button--blacklist {
+      background-color: #f87171;
+      color: #fff;
+      margin-right: 8px;
+    }
+
+    &__button--activate {
+      background-color: #4ade80;
+      color: #fff;
+    }
+  }
+}

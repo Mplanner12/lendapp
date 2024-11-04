@@ -1,0 +1,42 @@
+.dashboard {
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  &__user-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  .dashboard-content {
+    display: flex;
+    flex: 1;
+    margin-left: 255px;
+    position: relative;
+    top: 7rem;
+    padding: 20px;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-content {
+    margin-left: 0;
+    padding: 10px;
+  }
+}

@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+.sidebar-toggle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background: #39cdcc;
+  border: none;
+  color: white;
+  font-size: 24px;
+  padding: 5px 10px;
+  cursor: pointer;
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.sidebar {
+  padding-top: 2.5rem;
+  position: absolute;
+  top: 7.5rem;
+  left: 0;
+  width: 270px;
+  height: 100vh;
+  background-color: #ffffff;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  transition: transform 0.3s ease-in-out;
+  font-family: "Work Sans", sans-serif;
+
+  @media (max-width: 768px) {
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+    z-index: 999;
+
+    &.open {
+      transform: translateX(0);
+    }
+  }
+
+  &-header {
+    padding: 0 20px 20px;
+    margin-bottom: 1.25rem;
+  }
+
+  #dashboard-icon {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+    color: #213f7d;
+  }
+
+  .organization-switcher {
+    padding-left: 15px;
+    padding-right: 0px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: space-between;
+    width: 100%;
+    background: none;
+    border: none;
+    color: #213f7d;
+    font-size: 16px;
+    cursor: pointer;
+
+    svg {
+      margin-right: 10px;
+    }
+  }
+
+  #log-out-border {
+    width: 100%;
+    height: 1px;
+    background-color: #bdc3cf;
+    margin-top: 3.5rem;
+  }
+
+  #log-out {
+    padding-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  &-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+      font-family: "Work Sans", sans-serif;
+      font-weight: 400;
+      justify-content: flex-start;
+      gap: 0.75rem;
+      align-items: center;
+      padding: 10px 20px;
+      padding-left: 35px;
+      color: #465d8a;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      &:hover {
+        background-color: #f3f4f6;
+      }
+
+      &.active {
+        background-color: #39cdcc1a;
+        border-left: 3px solid #39cdcc;
+        color: #465d8a;
+        font-weight: 500;
+      }
+
+      svg {
+        margin-right: 10px;
+      }
+    }
+
+    .version {
+      font-size: 15px;
+      margin-top: -1rem;
+      margin-bottom: 1rem;
+    }
+
+    .menu-header {
+      font-size: 16px;
+      text-transform: uppercase;
+      color: #545f7d;
+      padding: 20px 20px 10px;
+      padding-left: 35px;
+      font-weight: 500;
+    }
+  }
+}
