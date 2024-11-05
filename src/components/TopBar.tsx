@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/TopBar.scss";
 import { BsBell } from "react-icons/bs";
 import { FaRegCircleUser } from "react-icons/fa6";
@@ -9,9 +9,15 @@ interface TopBarProps {
     name: string;
     avatar: string;
   };
+  setSearchTerm: (term: string) => void;
 }
 
-const TopBar: React.FC = ({ user }: TopBarProps) => {
+const TopBar: React.FC<TopBarProps> = ({ user, setSearchTerm }) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleSearch = () => {
+    setSearchTerm(inputValue); // Pass the input value up to Dashboard
+  };
   return (
     <header className="header">
       <div className="header__left">
@@ -28,8 +34,10 @@ const TopBar: React.FC = ({ user }: TopBarProps) => {
             type="text"
             placeholder="Search for anything"
             className="header__search-input"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
           />
-          <button className="header__search-button">
+          <button className="header__search-button" onClick={handleSearch}>
             <IoIosSearch size={20} color="white" />
           </button>
         </div>

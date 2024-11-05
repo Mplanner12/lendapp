@@ -3,19 +3,55 @@ import "../styles/Dashboard.scss";
 import TopBar from "../components/TopBar";
 import SidebarNav from "../components/SidebarNav";
 import UserDashboard from "../components/UserDashboardL";
+import usersData from "../data/User_DATA";
 
-interface User {
-  id: number;
-  name: string;
-  status: string;
+interface UserData {
+  organization: string;
+  username: string;
+  email: string;
+  phoneNumber: string;
+  dateJoined: string;
+  status: "Inactive" | "Pending" | "Blacklisted" | "Active";
+  id: string;
+  tier: number;
+  balance: string;
+  bankName: string;
+  personalInfo: {
+    fullName: string;
+    image: string;
+    phoneNumber: string;
+    email: string;
+    bvn: string;
+    gender: string;
+    maritalStatus: string;
+    children: string;
+    typeOfResidence: string;
+  };
+  education: {
+    level: string;
+    employmentStatus: string;
+    sector: string;
+    duration: string;
+    officeEmail: string;
+    monthlyIncome: string;
+    loanRepayment: string;
+  };
+  socials: {
+    twitter: string;
+    facebook: string;
+    instagram: string;
+  };
+  guarantor: {
+    fullName: string;
+    phoneNumber: string;
+    email: string;
+    relationship: string;
+  };
 }
 
 const Dashboard: React.FC = () => {
-  const [users, setUsers] = useState<User[]>([
-    { id: 1, name: "John Doe", status: "Active" },
-    { id: 2, name: "Jane Smith", status: "Inactive" },
-  ]);
-
+  const [users, setUsers] = useState<UserData[]>(usersData);
+  const [searchTerm, setSearchTerm] = useState("");
   const handleBlacklist = (id: number) => {
     console.log(`Blacklisting user with id ${id}`);
   };
@@ -26,11 +62,11 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="dashboard">
-      <TopBar />
+      <TopBar setSearchTerm={setSearchTerm} />
       <SidebarNav />
       {/* main content */}
       <main className="dashboard-content">
-        <UserDashboard />
+        <UserDashboard users={users} searchTerm={searchTerm} />
       </main>{" "}
     </div>
   );

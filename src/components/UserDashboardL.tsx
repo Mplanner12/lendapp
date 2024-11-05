@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import "../styles/UserDashboard.scss";
 import { IoFilterSharp } from "react-icons/io5";
 import FilterMenu from "./FilterMenu";
@@ -50,14 +50,27 @@ interface UserData {
   };
 }
 
-const UserDashboard: React.FC = () => {
-  const [users, setUsers] = useState<UserData[]>(usersData);
+interface UserDashboardProps {
+  users: UserData[];
+  searchTerm: string;
+}
+
+const UserDashboard: React.FC<UserDashboardProps> = ({ users, searchTerm }) => {
+  // const [users, setUsers] = useState<UserData[]>(usersData);
   const [filterMenuOpen, setFilterMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState("");
   const [userActionMenuOpen, setUserActionMenuOpen] = useState<number | null>(
     null
   );
   const [selectedUser, setSelectedUser] = useState<UserData | null>(null);
+
+  const SearchedUsers = useMemo(
+    () =>
+      users.filter((user) =>
+        user.username.toLowerCase().includes(searchTerm.toLowerCase())
+      ),
+    [users, searchTerm]
+  );
 
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 10;
@@ -70,7 +83,7 @@ const UserDashboard: React.FC = () => {
 
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
-  const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
+  const currentUsers = SearchedUsers.slice(indexOfFirstUser, indexOfLastUser);
 
   const handleUserSelect = (user: UserData) => {
     setSelectedUser(user);
