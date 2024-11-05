@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/TopBar.scss";
 import { BsBell } from "react-icons/bs";
-import { FaRegCircleUser } from "react-icons/fa6";
+import { FaBars, FaRegCircleUser } from "react-icons/fa6";
 import { IoMdArrowDropdown, IoIosSearch } from "react-icons/io";
 
 interface TopBarProps {
@@ -10,16 +10,20 @@ interface TopBarProps {
     avatar: string;
   };
   setSearchTerm: (term: string) => void;
+  toggleSidebar: () => void;
 }
 
-const TopBar: React.FC<TopBarProps> = ({ user, setSearchTerm }) => {
+const TopBar: React.FC<TopBarProps> = ({ toggleSidebar, setSearchTerm }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleSearch = () => {
-    setSearchTerm(inputValue); // Pass the input value up to Dashboard
+    setSearchTerm(inputValue);
   };
   return (
     <header className="header">
+      <button className="header__menu-icon" onClick={toggleSidebar}>
+        <FaBars size={20} />
+      </button>
       <div className="header__left">
         <img
           src="/assets/Logo.png"

@@ -52,6 +52,10 @@ interface UserData {
 const Dashboard: React.FC = () => {
   const [users, setUsers] = useState<UserData[]>(usersData);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+
   const handleBlacklist = (id: number) => {
     console.log(`Blacklisting user with id ${id}`);
   };
@@ -61,9 +65,9 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="dashboard">
-      <TopBar setSearchTerm={setSearchTerm} />
-      <SidebarNav />
+    <div className={`dashboard ${isSidebarOpen ? "sidebar-open" : ""}`}>
+      <TopBar setSearchTerm={setSearchTerm} toggleSidebar={toggleSidebar} />
+      <SidebarNav isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       {/* main content */}
       <main className="dashboard-content">
         <UserDashboard users={users} searchTerm={searchTerm} />

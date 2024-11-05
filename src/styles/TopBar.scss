@@ -15,6 +15,18 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-family: "Work Sans", sans-serif;
 
+  .header__menu-icon {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  }
+
   &__left {
     display: flex;
     align-items: center;

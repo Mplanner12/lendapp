@@ -31,6 +31,17 @@
     background-color: #f9f9f9;
     overflow-y: auto;
     scrollbar-width: thin;
+
+    @media (max-width: 768px) {
+      margin-left: 0;
+      padding: 10px;
+    }
+
+    &.sidebar-open .dashboard-content {
+      @media (max-width: 768px) {
+        filter: blur(2px);
+      }
+    }
   }
 }
 

@@ -17,12 +17,15 @@
   }
 
   .statistics-cards {
+    gap: 10px;
     display: flex;
     gap: 1.5rem;
     justify-content: space-between;
+    align-items: flex-start;
     margin-bottom: 40px;
 
     .stat-card {
+      text-align: center;
       background-color: #fff;
       border-radius: 4px;
       padding: 20px;
@@ -217,13 +220,15 @@
     }
 
     .statistics-cards {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-content: flex-start;
+      place-items: center;
       gap: 10px;
-    }
 
-    .stat-card {
-      text-align: center;
+      .stat-card {
+        width: 100%;
+      }
     }
   }
 }

@@ -2,15 +2,23 @@ import React, { useState } from "react";
 import { FaAngleDown } from "react-icons/fa6";
 import "../styles/SidebarNav.scss";
 
-const SidebarNav: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface SidebarNavProps {
+  isOpen: boolean;
+  toggleSidebar: () => void;
+}
 
-  const toggleSidebar = () => setIsOpen(!isOpen);
+const SidebarNav: React.FC<SidebarNavProps> = ({
+  isOpen,
+  toggleSidebar,
+}: SidebarNavProps) => {
+  // const [isOpen, setIsOpen] = useState(false);
+
+  // const toggleSidebar = () => setIsOpen(!isOpen);
 
   return (
-    <aside>
-      <button className="sidebar-toggle" onClick={toggleSidebar}>
-        ☰
+    <aside className={`sidebar ${isOpen ? "open" : ""}`}>
+      <button className="sidebar-close" onClick={toggleSidebar}>
+        ✕
       </button>
       <nav className={`sidebar ${isOpen ? "open" : ""}`}>
         <div className="sidebar-header">
