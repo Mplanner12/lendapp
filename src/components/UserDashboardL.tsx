@@ -75,7 +75,7 @@ const UserDashboard: React.FC<UserDashboardProps> = ({ users, searchTerm }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 10;
 
-  const totalPages = Math.ceil(users.length / usersPerPage);
+  const totalPages = Math.ceil(SearchedUsers.length / usersPerPage);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -225,9 +225,9 @@ const UserDashboard: React.FC<UserDashboardProps> = ({ users, searchTerm }) => {
             <div className="entries-dropdown">
               <span>Showing</span>
               <select>
-                <option>100</option>
+                <option>{currentUsers.length}</option>
               </select>
-              <span>out of {users.length} entries</span>
+              <span>out of {SearchedUsers.length} entries</span>
             </div>
             <div className="page-numbers">
               <button
