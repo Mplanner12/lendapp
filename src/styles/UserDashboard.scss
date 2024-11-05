@@ -183,3 +183,47 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .user-dashboard {
+    padding: 10px;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .user-table {
+      overflow-x: auto;
+    }
+
+    .pagination {
+      flex-direction: column;
+      align-items: center;
+
+      .entries-dropdown {
+        margin-bottom: 10px;
+      }
+
+      .page-numbers {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        button {
+          margin: 0 5px;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .statistics-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .stat-card {
+      text-align: center;
+    }
+  }
+}

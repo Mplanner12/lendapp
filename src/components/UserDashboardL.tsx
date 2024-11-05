@@ -103,22 +103,22 @@ const UserDashboard: React.FC = () => {
             <div className="stat-card">
               <img src="/assets/users-stat-icon.png" alt="users-stat-logo" />
               <h3>USERS</h3>
-              <p>2,453</p>
+              <p>{users.length}</p>
             </div>
             <div className="stat-card">
               <img src="/assets/active-users-icon.png" alt="users-stat-logo" />
               <h3>ACTIVE USERS</h3>
-              <p>2,453</p>
+              <p>{users.filter((user) => user.status === "Active").length}</p>
             </div>
             <div className="stat-card">
               <img src="/assets/l-users-icon.png" alt="users-stat-logo" />
               <h3>USERS WITH LOANS</h3>
-              <p>12,453</p>
+              <p>96</p>
             </div>
             <div className="stat-card">
               <img src="/assets/users-savings-icon.png" alt="users-stat-logo" />
               <h3>USERS WITH SAVINGS</h3>
-              <p>102,453</p>
+              <p>45</p>
             </div>
           </div>
           <div className="user-table">
