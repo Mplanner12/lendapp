@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/TopBar.scss";
 import { BsBell } from "react-icons/bs";
 import { FaBars, FaRegCircleUser } from "react-icons/fa6";
@@ -19,6 +19,7 @@ const TopBar: React.FC<TopBarProps> = ({ toggleSidebar, setSearchTerm }) => {
   const handleSearch = () => {
     setSearchTerm(inputValue);
   };
+
   return (
     <header className="header">
       <button className="header__menu-icon" onClick={toggleSidebar}>

@@ -23,13 +23,20 @@
 
     @media (max-width: 768px) {
       display: inline-block;
-      margin-right: 10px;
+      position: relative;
+      left: -2rem;
+      margin: 0;
     }
   }
 
   &__left {
     display: flex;
     align-items: center;
+    @media (max-width: 768px) {
+      justify-content: flex-start;
+      position: relative;
+      left: -1.2rem;
+    }
   }
 
   &__logo {
@@ -80,6 +87,11 @@
   &__right {
     display: flex;
     align-items: center;
+    @media (max-width: 768px) {
+      position: relative;
+      left: 0rem;
+      margin: 0;
+    }
   }
 
   &__docs-link {
@@ -94,6 +106,9 @@
     border: none;
     cursor: pointer;
     margin-right: 20px;
+    @media (max-width: 768px) {
+      display: none;
+    }
 
     img {
       width: 24px;
@@ -125,5 +140,15 @@
   &__dropdown-arrow {
     width: 12px;
     height: 12px;
+  }
+
+  @media (max-width: 768px) {
+    .header__center {
+      display: none;
+    }
+
+    .header__docs-link {
+      display: none;
+    }
   }
 }
