@@ -7,15 +7,14 @@ const LoginPage: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
-    // Handle login logic (e.g., validation, API call)
     console.log("Login clicked", { email, password });
+    window.location.href = "/dashboard";
   };
 
   return (
     <div className="login-container">
       <div className="login-content">
         <div className="login-left">
-          {/* Placeholder for image/illustration */}
           <div className="header">
             <img src="/assets/Logo.png" alt="Login Illustration" />
             <h2>lendsqr</h2>
