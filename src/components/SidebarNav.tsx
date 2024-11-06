@@ -11,10 +11,6 @@ const SidebarNav: React.FC<SidebarNavProps> = ({
   isOpen,
   toggleSidebar,
 }: SidebarNavProps) => {
-  // const [isOpen, setIsOpen] = useState(false);
-
-  // const toggleSidebar = () => setIsOpen(!isOpen);
-
   return (
     <aside className={`sidebar ${isOpen ? "open" : ""}`}>
       <button className="sidebar-close" onClick={toggleSidebar}>

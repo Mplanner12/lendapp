@@ -37,17 +37,12 @@
   @media (max-width: 768px) {
     width: 0;
     position: fixed;
-    left: 0;
-    top: 0;
     transform: translateX(-100%);
     z-index: 999;
 
     &.open {
       transform: translateX(0);
-    }
-
-    @media (min-width: 769px) {
-      transform: translateX(0);
+      width: 100%;
     }
   }
 

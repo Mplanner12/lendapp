@@ -54,15 +54,7 @@ const Dashboard: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
-
-  const handleBlacklist = (id: number) => {
-    console.log(`Blacklisting user with id ${id}`);
-  };
-
-  const handleActivate = (id: number) => {
-    console.log(`Activating user with id ${id}`);
-  };
+  const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
 
   return (
     <div className={`dashboard ${isSidebarOpen ? "sidebar-open" : ""}`}>

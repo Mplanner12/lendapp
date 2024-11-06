@@ -124,6 +124,9 @@
       .options-icon {
         cursor: pointer;
         margin-left: 5px;
+        @media (max-width: 768px) {
+          display: none;
+        }
       }
 
       .status {
