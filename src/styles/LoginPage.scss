@@ -172,7 +172,7 @@
           border-radius: 7px;
           font-size: 16px;
           cursor: pointer;
-          margin: 0; /* Ensure no unwanted margin */
+          margin: 0;
 
           &:hover {
             background-color: #0096c7;
@@ -182,6 +182,11 @@
           width: 100%;
           display: block;
           box-sizing: border-box;
+        }
+
+        .error-message {
+          color: red;
+          margin: 0;
         }
       }
     }

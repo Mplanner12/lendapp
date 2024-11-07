@@ -5,10 +5,40 @@ const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
-  const handleLogin = () => {
-    console.log("Login clicked", { email, password });
-    window.location.href = "/dashboard";
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    let hasErrors = false;
+
+    // Basic email validation
+    if (!email) {
+      setEmailError("Email is required");
+      hasErrors = true;
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      setEmailError("Invalid email format");
+      hasErrors = true;
+    } else {
+      setEmailError("");
+    }
+
+    // Basic password validation
+    if (!password) {
+      setPasswordError("Password is required");
+      hasErrors = true;
+    } else if (password.length < 6) {
+      setPasswordError("Password must be at least 6 characters");
+      hasErrors = true;
+    } else {
+      setPasswordError("");
+    }
+
+    // If there are no errors, login is proceeded with
+    if (!hasErrors) {
+      console.log("Login clicked", { email, password });
+      window.location.href = "/dashboard";
+    }
   };
 
   return (
@@ -35,6 +65,7 @@ const LoginPage: React.FC = () => {
                 required
                 placeholder="Email"
               />
+              {emailError && <p className="error-message">{emailError}</p>}
             </div>
             <div className="form-group">
               <div className="password-input">
@@ -52,13 +83,16 @@ const LoginPage: React.FC = () => {
                   {showPassword ? "HIDE" : "SHOW"}
                 </span>
               </div>
+              {passwordError && (
+                <p className="error-message">{passwordError}</p>
+              )}
             </div>
             <a href="#" className="forgot-password">
               FORGOT PASSWORD?
             </a>
             <button
               type="submit"
-              onClick={handleLogin}
+              onClick={(e) => handleLogin(e)}
               className="login-button"
             >
               LOG IN

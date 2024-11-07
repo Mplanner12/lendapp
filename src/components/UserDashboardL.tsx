@@ -4,7 +4,6 @@ import { IoFilterSharp } from "react-icons/io5";
 import FilterMenu from "./FilterMenu";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import UserDetails from "./UserDetails";
-import usersData from "../data/User_DATA";
 
 interface UserData {
   organization: string;
@@ -56,7 +55,6 @@ interface UserDashboardProps {
 }
 
 const UserDashboard: React.FC<UserDashboardProps> = ({ users, searchTerm }) => {
-  // const [users, setUsers] = useState<UserData[]>(usersData);
   const [filterMenuOpen, setFilterMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState("");
   const [userActionMenuOpen, setUserActionMenuOpen] = useState<number | null>(
@@ -104,8 +102,6 @@ const UserDashboard: React.FC<UserDashboardProps> = ({ users, searchTerm }) => {
   const handleUserActionClick = (index: number) => {
     setUserActionMenuOpen(userActionMenuOpen === index ? null : index);
   };
-
-  users.map((user, index) => console.log(user.organization));
 
   return (
     <div className="user-dashboard">
