@@ -13,9 +13,6 @@ const SidebarNav: React.FC<SidebarNavProps> = ({
 }: SidebarNavProps) => {
   return (
     <aside className={`sidebar ${isOpen ? "open" : ""}`}>
-      <button className="sidebar-close" onClick={toggleSidebar}>
-        ✕
-      </button>
       <nav className={`sidebar ${isOpen ? "open" : ""}`}>
         <div className="sidebar-header">
           <button className="organization-switcher">
