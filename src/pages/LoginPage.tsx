@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/LoginPage.scss";
 
 const LoginPage: React.FC = () => {
@@ -36,13 +38,25 @@ const LoginPage: React.FC = () => {
 
     // If there are no errors, login is proceeded with
     if (!hasErrors) {
-      console.log("Login clicked", { email, password });
-      window.location.href = "/dashboard";
+      toast.success("Login successful!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setTimeout(() => {
+        window.location.href = "/dashboard";
+      }, 2300);
     }
   };
 
   return (
     <div className="login-container">
+      <ToastContainer />
       <div className="login-content">
         <div className="login-left">
           <div className="header">
